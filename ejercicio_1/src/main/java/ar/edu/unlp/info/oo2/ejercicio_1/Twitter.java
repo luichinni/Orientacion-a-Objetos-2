@@ -10,9 +10,9 @@ public class Twitter {
 		users = new LinkedList<Usuario>();
 	}
 	
-	public Usuario RegistrarUsuario(String screenName) {
+	public Usuario registrarUsuario(String screenName) {
 		Usuario retornoU = null;
-		Usuario user = ObtenerUsuario(screenName);
+		Usuario user = obtenerUsuario(screenName);
 		 if (user == null) {
 			 retornoU= new Usuario(screenName);
 			 users.add(retornoU);
@@ -20,12 +20,12 @@ public class Twitter {
 		return retornoU;
 	}
 	
-	public boolean EliminarUsuario(String screenName) {
+	public boolean eliminarUsuario(String screenName) {
 		boolean pude= false;
-		Usuario user= ObtenerUsuario(screenName);
+		Usuario user= obtenerUsuario(screenName);
 		if(user != null) {
 			for (Tweet tweet : user.VerTweets()) {
-				EliminarTweet(tweet);
+				eliminarTweet(tweet);
 			}
 			users.remove(user);
 			pude = true;	
@@ -34,21 +34,18 @@ public class Twitter {
 		
 	}
 	
-	public Usuario ObtenerUsuario(String screenName) {
+	public Usuario obtenerUsuario(String screenName) {
 		return users.stream()
 				.filter(usuario -> usuario.obtenerNombre().equals(screenName))
 				.findFirst().orElse(null);
 		
 	}
 	
-	public void EliminarTweet(Tweet tweet) {
+	public void eliminarTweet(Tweet tweet) {
 		for(Usuario usr : users) {
 			for(Tweet twit : usr.VerTweets()) {
-				if(twit.TieneReferencia()) {
-					ReTweet rt = (ReTweet)twit; // buscar mejor manera sin casteo igual es de juguete
-					if (rt.ObtenerUsuario().obtenerNombre().equals(tweet.ObtenerUsuario().obtenerNombre())) {
-						usr.EliminarTweet(twit);
-					}
+				if(twit.referenciaA(twit)) {
+					usr.EliminarTweet(twit);
 				}
 			}
 		}

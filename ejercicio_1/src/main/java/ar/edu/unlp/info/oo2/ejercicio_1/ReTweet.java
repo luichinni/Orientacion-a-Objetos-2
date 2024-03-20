@@ -10,17 +10,17 @@ public class ReTweet extends Tweet {
 	}
 
 	@Override
-	public String ObtenerTexto() {
+	public String obtenerTexto() {
 		
-		return origen.ObtenerTexto();
+		return origen.obtenerTexto();
 	}
 
 	@Override
-	public boolean TieneReferencia() {
-		return true;
+	public boolean referenciaA(Tweet tweet) {
+		return tweet.equals(origen);
 	}
 	
-	public Tweet ObtenerTweetOrigen() {
+	public Tweet obtenerTweetOrigen() {
 		return origen;
 	}
 	

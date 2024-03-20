@@ -1,5 +1,4 @@
 package ar.edu.unlp.info.oo2.ejercicio_1;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -14,28 +13,28 @@ public class TwitterTest {
 	@BeforeEach
 	void setUp() {
 		twitt = new Twitter();
-		user = twitt.RegistrarUsuario("pepe");
+		user = twitt.registrarUsuario("pepe");
 		
 	}
 	
 	@Test
 	public void testRegistrar() {
-		assertNotNull(twitt.RegistrarUsuario("Luciano<3"));
-		assertNull(twitt.RegistrarUsuario("Luciano<3"));
+		assertNotNull(twitt.registrarUsuario("Luciano<3"));
+		assertNull(twitt.registrarUsuario("Luciano<3"));
 	}
 	
 	@Test
 	public void testObtener() {
-		assertNotNull(twitt.ObtenerUsuario(user.obtenerNombre()));
+		assertNotNull(twitt.obtenerUsuario(user.obtenerNombre()));
 		//twitt.EliminarUsuario(user.obtenerNombre());
-		assertNull(twitt.ObtenerUsuario("juancho pancho"));
+		assertNull(twitt.obtenerUsuario("juancho pancho"));
 	}
 	
 	
 	@Test
 	public void testEliminar() {
-		assertTrue(twitt.EliminarUsuario(user.obtenerNombre()));
-		assertFalse(twitt.EliminarUsuario(user.obtenerNombre()));
+		assertTrue(twitt.eliminarUsuario(user.obtenerNombre()));
+		assertFalse(twitt.eliminarUsuario(user.obtenerNombre()));
 	}
 	
 }

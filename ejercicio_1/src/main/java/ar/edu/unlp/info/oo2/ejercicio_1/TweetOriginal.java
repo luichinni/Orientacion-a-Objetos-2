@@ -9,12 +9,12 @@ public class TweetOriginal extends Tweet {
 	}
 
 	@Override
-	public String ObtenerTexto() {
+	public String obtenerTexto() {
 		return texto;
 	}
 
 	@Override
-	public boolean TieneReferencia() {
+	public boolean referenciaA(Tweet tweet) {
 		return false;
 	}
 }

@@ -8,11 +8,11 @@ public abstract class Tweet {
 		this.user = user;
 	}
 	
-	public abstract String ObtenerTexto();
+	public abstract String obtenerTexto();
 
-	public Usuario ObtenerUsuario() {
+	public Usuario obtenerUsuario() {
 		return user;
 	}
 	
-	public abstract boolean TieneReferencia();
+	public abstract boolean referenciaA(Tweet tweet);
 }
