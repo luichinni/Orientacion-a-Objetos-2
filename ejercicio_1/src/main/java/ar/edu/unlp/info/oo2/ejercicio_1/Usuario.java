@@ -15,7 +15,7 @@ public class Usuario {
 	
 	public Tweet Twittear(String texto) {
 		Tweet t= null;
-		if (texto.length() > 0 && texto.length() <= 280) {
+		if (texto.length() >= TweetOriginal.obtenerTextoMinimo() && texto.length() <= TweetOriginal.obtenerTextoMaximo()) {
 			t= new TweetOriginal(this,texto);
 			tweets.add(t);
 		}
