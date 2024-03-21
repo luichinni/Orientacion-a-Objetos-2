@@ -13,7 +13,7 @@ public class Usuario {
 		tweets = new LinkedList<Tweet>();
 	}
 	
-	public Tweet Twittear(String texto) {
+	public Tweet twittear(String texto) {
 		Tweet t= null;
 		if (texto.length() >= TweetOriginal.obtenerTextoMinimo() && texto.length() <= TweetOriginal.obtenerTextoMaximo()) {
 			t= new TweetOriginal(this,texto);
@@ -23,17 +23,17 @@ public class Usuario {
 		return t;
 	}
 	
-	public Tweet ReTwittear(Tweet tweet) {
+	public Tweet reTwittear(Tweet tweet) {
 		Tweet t= new ReTweet(this,tweet);
 		tweets.add(t);
 		return t;
 	}
 	
-	public boolean EliminarTweet(Tweet tweet) {
+	public boolean eliminarTweet(Tweet tweet) {
 		return tweets.remove(tweet);
 	}
 	
-	public List<Tweet> VerTweets(){
+	public List<Tweet> verTweets(){
 		return tweets;
 	}
 	

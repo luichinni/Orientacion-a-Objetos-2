@@ -14,7 +14,7 @@ public class UsuarioTest {
 	@BeforeEach
 	void setUp() {
 		user = new Usuario("pepo");
-		tweet= user.Twittear("pepepepep");
+		tweet= user.twittear("pepepepep");
 	}
 	
 	@Test
@@ -24,14 +24,14 @@ public class UsuarioTest {
 			text = text+"a";
 		}
 		
-		assertNull(user.Twittear(text));
-		assertNull(user.Twittear(""));
-		assertNotNull(user.Twittear("Hola"));
+		assertNull(user.twittear(text));
+		assertNull(user.twittear(""));
+		assertNotNull(user.twittear("Hola"));
 	}
 	
 	@Test
 	public void testEliminar() {
-		assertTrue(user.EliminarTweet(tweet));
-		assertFalse(user.EliminarTweet(tweet));
+		assertTrue(user.eliminarTweet(tweet));
+		assertFalse(user.eliminarTweet(tweet));
 	}
 }
