@@ -34,6 +34,7 @@ public class Twitter {
 		if(user != null) {
 			for (Tweet tweet : user.verTweets()) {
 				eliminarTweet(tweet);
+				user.eliminarTweet(tweet);
 			}
 			users.remove(user);
 			pude = true;	

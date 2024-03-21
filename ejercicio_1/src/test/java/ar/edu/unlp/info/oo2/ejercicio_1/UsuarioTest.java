@@ -18,15 +18,26 @@ public class UsuarioTest {
 	}
 	
 	@Test
-	public void testTwittear() {//separar las particiones
+	public void testTwittearMaxChar() {//separar las particiones
 		String text = "a";
 		for(int i=0; i<280; i++) {
 			text = text+"a";
 		}
 		
 		assertNull(user.twittear(text));
+	}
+	@Test
+	public void testTwittearMinChar() {
 		assertNull(user.twittear(""));
-		assertNotNull(user.twittear("Hola"));
+	}
+	@Test
+	public void testTwittearNormal() {
+		String text = "";
+		for(int i=0; i<280; i++) {
+			text = text+"a";
+		}
+		assertNotNull(user.twittear("1"));
+		assertNotNull(user.twittear(text));
 	}
 	
 	@Test
