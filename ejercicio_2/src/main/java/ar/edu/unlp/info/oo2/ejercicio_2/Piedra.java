@@ -3,23 +3,23 @@ package ar.edu.unlp.info.oo2.ejercicio_2;
 public class Piedra extends Jugada {
 
 	@Override
-	public boolean jugarContra(Jugada jugada) {
-		return !jugada.jugarContraPiedra();
+	public int jugarContra(Jugada jugada) {
+		return jugada.jugarContraPiedra() * -1;
 	}
 
 	@Override
-	public boolean jugarContraPiedra() {
-		return false;
+	public int jugarContraPiedra() {
+		return 0;
 	}
 
 	@Override
-	public boolean jugarContraPapel() {
-		return false;
+	public int jugarContraPapel() {
+		return -1;
 	}
 
 	@Override
-	public boolean jugarContraTijera() {
-		return false;
+	public int jugarContraTijera() {
+		return 1;
 	}
 
 }
