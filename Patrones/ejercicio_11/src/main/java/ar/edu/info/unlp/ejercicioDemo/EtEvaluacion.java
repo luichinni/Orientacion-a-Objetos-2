@@ -3,33 +3,18 @@ package ar.edu.info.unlp.ejercicioDemo;
 public class EtEvaluacion extends Etapa{
 
 	@Override
-	public double getCosto() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void aprobarEtapa(Proyecto context) {
+		context.cambiarEtapa(new EtConfirmado());
 	}
 
 	@Override
-	public double getPrecio() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double aprobarProyecto() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void modifMargenGanancia() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void cancelarProyecto() {
-		// TODO Auto-generated method stub
-		
+	public void modifMargenGanancia(Proyecto context,double margen) {
+		// Para “En evaluación” -> valores entre 11% y 15%
+		if (margen > 0.11 && margen < 0.15){
+			context.setMargen(margen);
+		}else{
+			throw new RuntimeException("Margen de ganancia debe estar entre el 11% y 15%");
+		}	
 	}
 
 }

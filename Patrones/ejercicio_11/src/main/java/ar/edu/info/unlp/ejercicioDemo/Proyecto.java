@@ -1,45 +1,66 @@
 package ar.edu.info.unlp.ejercicioDemo;
 
-import java.sql.Date;
+import java.time.Duration;
+import java.time.LocalDate;
 
 public class Proyecto {
-	private Date feChaI;
-	private Date fechaF;
+	private String nombre;
+	private LocalDate feChaI;
+	private LocalDate fechaF;
 	private double margenG;
 	private String objetivo;
 	private int integrantes;
 	private double montoPorDia;
-	private Etapa etapas;
+	private Etapa etapa;
 	
-	public Proyecto(Date fechaI,Date fechaF,String objetivo,int integrantes, double montoDia)
+	public Proyecto(String nombre, LocalDate fechaI,LocalDate fechaF,String objetivo,int integrantes, double montoDia)
 	{
-		this.etapas = new EtContruccion();
+		this.nombre = nombre;
+		this.etapa = new EtConstruccion();
 		this.fechaF= fechaF;
 		this.feChaI = fechaI;
 		this.integrantes= integrantes;
-		this.margenG = 7;
+		this.margenG = 0.07;
 		this.objetivo = objetivo; 
 		this.montoPorDia = montoDia;
 	}
 	
-	public double getCosto() {
-		return 0;
-	};
+	public double getCosto() { 
+		// tuve q poner atStartOfDay() ya que Duration.between pide un temporal q soporte segundos y cosas asi, cosa que con localdate pelado no pasa.
+		return this.integrantes * this.montoPorDia * Duration.between(this.feChaI.atStartOfDay(),this.fechaF.atStartOfDay()).toDays();
+	}
 	
 	public double getPrecio() {
-		return 0;
-	};
+		return this.getCosto() + this.getCosto() * this.margenG;
+	}
 	
 	public void aprobarEtapa() {
-		
-	};
-	
-	public void modifMargenGanancia () {
-		
+		this.etapa.aprobarEtapa(this);
 	}
 	
+	public void modifMargenGanancia (double margen) {
+		this.etapa.modifMargenGanancia(this,margen);
+	}
+	
+	public void setMargen(double margen){
+		this.margenG = margen;
+	}
+
+	public void cambiarEtapa(Etapa etapa){
+		this.etapa = etapa;
+	}
+
+	public Etapa getEtapa(){
+		return this.etapa;
+	}
+
 	public void cancelarProyecto () {
-		
+		this.etapa.cancelarProyecto(this);
+		this.objetivo = this.getObjetivo() + "(Cancelado)";
 	}
-	
+
+	public String getObjetivo(){
+		return this.objetivo;
+	}
+
 }
